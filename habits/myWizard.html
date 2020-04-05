@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/smart_wizard.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="scripts/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.smartWizard.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('#wizard').smartWizard({transitionEffect:'slide',onFinish:onFinishCallback});
+	  workInColumn =JSON.parse(localStorage.getItem("workInColumn"));
+	  if (workInColumn)
+	  {
+	    workInColumn = jQuery.parseJSON(workInColumn);
+		$(".removeCues").val(workInColumn.removeCues);
+		$(".reframeYourMindSet").val(workInColumn.reframeYourMindSet),
+		$(".benefitsOfAvoiding").val(workInColumn.benefitsOfAvoiding),
+		$(".friction").val(workInColumn.friction),
+		$(".futureChoices").val(workInColumn.futureChoices),
+		$(".watchYourBehavior").val(workInColumn.watchYourBehavior),
+		$(".costsOfHabit").val(workInColumn.costsOfHabit)
+	  }
+	  
+      function onFinishCallback(){
+	 // saveToFileAsDownload(text,"mm.json");
+	      var id = localStorage.getItem("habitId");
+	 	  var work = {
+		  <!-- habitId:id, -->
+		  removeCues:$(".removeCues").val(),
+		  reframeYourMindSet:$(".reframeYourMindSet").val(),
+		  benefitsOfAvoiding:$(".benefitsOfAvoiding").val(),
+		  friction:$(".friction").val(),
+		  futureChoices:$(".futureChoices").val(),
+		  watchYourBehavior:$(".watchYourBehavior").val(),
+		  costsOfHabit:$(".costsOfHabit").val()
+		  };
+		  localStorage.setItem("workText", JSON.stringify(work));
+		  window.location.replace("breakBadHabits.html");
+      }     
+		});
+</script>
+
+</head>
+
+<body>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+
+<!-- Smart Wizard wizard-->
+  		<div id="wizard" class="swMain">
+  			<ul>
+  				<li><a href="#step-1">
+                <label class="stepNumber">1</label>
+                <span class="stepDesc">
+                   Step 1<br />
+                   <small>Make it invisible</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-2">
+                <label class="stepNumber">2</label>
+                <span class="stepDesc">
+                   Step 2<br />
+                   <small>Make it unattractive</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-3">
+                <label class="stepNumber">3</label>
+                <span class="stepDesc">
+                   Step 3<br />
+                   <small>Make it difficult</small>
+                </span>                    
+             </a></li>
+  				<li><a href="#step-4">
+                <label class="stepNumber">4</label>
+                <span class="stepDesc">
+                   Step 4<br />
+                   <small>Make it unsatisfying</small>
+                </span>                   
+            </a></li>
+  			</ul>
+  			<div id="step-1">	
+            <h2 class="StepTitle">Step 1. Make it invisible</h2>           
+            <p>Remove the cues of your bad habit from your environment</p>   
+			<textarea rows="10" cols="110" class='removeCues'></textarea>			
+        </div>
+  			<div id="step-2">
+            <h2 class="StepTitle">Step 2. Make it unattractive</h2>	
+            <p>Reframe your mind-set.</p>   
+			<textarea rows="5" cols="110" class='reframeYourMindSet'></textarea> 
+			<p>Highlight the benefits of avoiding your bad habits</p>   
+			<textarea rows="5" cols="110" class='benefitsOfAvoiding'></textarea>		
+        </div>                       
+  			<div id="step-3">
+            <h2 class="StepTitle">Step 3. Make it difficult</h2>	
+            <p>Increase friction. Increase number of steps between you and your bad habits.</p>   
+			<textarea rows="5" cols="110" class='friction'></textarea> 
+			<p>Use a commitment device. Restrict your future choices to the ones that benefit you.</p>   
+			<textarea rows="5" cols="110" class='futureChoices'></textarea>		               				          
+        </div>
+  			<div id="step-4">
+            <h2 class="StepTitle">Step 4. Make it unsatisfying</h2>	
+			<p>Get an accountability partner. Ask someone to watch your behavior.</p>   
+			<textarea rows="5" cols="110" class='watchYourBehavior'></textarea> 
+			<p>Create a habit contract. Make the costs of your bad habit public and painful.</p>   
+			<textarea rows="5" cols="110" class='costsOfHabit'></textarea>		         
+            </p>                			
+        </div>
+  		</div>
+</td></tr>
+</table>  		
+</body>
+</html>

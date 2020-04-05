@@ -1,0 +1,22 @@
+.b-menu {
+    margin: 20px 0 0;
+    padding: 0;
+}
+.b-menu__item {
+    background: none repeat scroll 0 0 #EEEEEE;
+    display: inline-block;
+    vertical-align: top;
+	margin-right: 2px;	
+}
+.b-menu__link {
+    display: inline-block;
+	color: #deffef;
+	text-decoration: none;
+    background: rgba(1,89,47,0.7);
+	transition: all 300ms ease-out;
+}
+
+.b-menu__link:hover {
+    background: rgba(1,89,47,0.5);
+	text-decoration: none;
+}

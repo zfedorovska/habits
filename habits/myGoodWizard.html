@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/smart_wizard.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="scripts/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.smartWizard.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('#wizard').smartWizard({transitionEffect:'slide',onFinish:onFinishCallback});
+	  workInColumn =JSON.parse(localStorage.getItem("workInColumn"));
+	  if (workInColumn)
+	  {
+	    workInColumn = jQuery.parseJSON(workInColumn);
+		$(".implementation").val(workInColumn.implementation);
+		$(".motivation").val(workInColumn.motivation),
+		$(".smallChoices").val(workInColumn.smallChoices),
+		$(".futureChoices").val(workInColumn.futureChoices),
+		$(".habitTracker").val(workInColumn.habitTracker)
+	  }
+	  
+      function onFinishCallback(){
+	 // saveToFileAsDownload(text,"mm.json");
+	      var id = localStorage.getItem("habitId");
+	 	  var workGood = {
+		  <!-- habitId:id, -->
+		  implementation:$(".implementation").val(),
+		  motivation:$(".motivation").val(),
+		  smallChoices:$(".smallChoices").val(),
+		  futureChoices:$(".futureChoices").val(),
+		  habitTracker:$(".habitTracker").val()
+		  };
+		  localStorage.setItem("workText", JSON.stringify(workGood));
+          //alert('Finish Called');
+		  window.location.replace("breakBadHabits.html");
+      }     
+		});
+</script>
+
+</head>
+
+<body>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+
+<!-- Smart Wizard wizard-->
+  		<div id="wizard" class="swMain">
+  			<ul>
+  				<li><a href="#step-1">
+                <label class="stepNumber">1</label>
+                <span class="stepDesc">
+                   Step 1<br />
+                   <small>Make it obvious</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-2">
+                <label class="stepNumber">2</label>
+                <span class="stepDesc">
+                   Step 2<br />
+                   <small>Make it attractive</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-3">
+                <label class="stepNumber">3</label>
+                <span class="stepDesc">
+                   Step 3<br />
+                   <small>Make it easy</small>
+                </span>                    
+             </a></li>
+  				<li><a href="#step-4">
+                <label class="stepNumber">4</label>
+                <span class="stepDesc">
+                   Step 4<br />
+                   <small>Make it satisfying</small>
+                </span>                   
+            </a></li>
+  			</ul>
+  			<div id="step-1">	
+            <h2 class="StepTitle">Step 1. Make it obvious</h2>           
+            <p>Use implementation technique. I will [behavior] at [time] in [location]</p>   
+			<textarea rows="10" cols="110" class='implementation'></textarea>			
+        </div>
+  			<div id="step-2">
+            <h2 class="StepTitle">Step 2. Make it attractive</h2>	
+            <p>Add motivation ritual you enjoy immediately before a difficult habit</p>   
+			<textarea rows="5" cols="110" class='motivation'></textarea> 	
+        </div>                       
+  			<div id="step-3">
+            <h2 class="StepTitle">Step 3. Make it easy</h2>	
+            <p>Optimize the small choices.</p>   
+			<textarea rows="5" cols="110" class='smallChoices'></textarea> 
+			<p>Use two minutes rule</p>   
+			<textarea rows="5" cols="110" class='futureChoices'></textarea>		               				          
+        </div>
+  			<div id="step-4">
+            <h2 class="StepTitle">Step 4. Make it satisfying</h2>	
+			<p>Use habit tracker</p>   
+			<textarea rows="5" cols="110" class='habitTracker'></textarea> 	                        			
+        </div>
+  		</div>
+</td></tr>
+</table>  		
+</body>
+</html>

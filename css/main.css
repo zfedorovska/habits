@@ -1,0 +1,50 @@
+body {
+	background: url(../images/darkTower.jpg) 0 0 / cover;
+	margin: 0;
+	cc
+}
+
+.container {
+	font-weight: semi-bold;
+	color: rgba(1,89,47);
+}
+
+.userInfoInput{
+	color: #fff;
+}
+
+th {
+  white-space: nowrap;
+ 
+}
+
+h1 {
+	text-align: center;
+}
+
+td {
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.updateVisible {
+	display:none;
+} 
+
+.containerNumbers {
+	display: flex;
+	width: 102px;
+	align-items: center;
+}
+
+.result{
+	width: 35px;
+	height: 35px;
+}
+
+.btn {
+	border: 1px solid black;
+}
+	

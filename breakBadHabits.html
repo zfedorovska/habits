@@ -1,0 +1,95 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+		</title>
+		<meta charset='UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='stylesheet' href='css/menu.css'>
+		<link rel='stylesheet' href='css/main.css'>
+		<link rel='stylesheet' href='css/smart_wizard.css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<ul class='b-menu' id="menu1">
+			<li class='b-menu__item'><a href='habitsHome.html' class='b-menu__link'>Home</a></li>
+			<li class='b-menu__item'><a href='breakBadHabits.html' class='b-menu__link'>Build better habits and break bad habits</a></li>
+		</ul>
+		
+		<div class="page-header">
+			<h1>Build better habits and break bad habits</h1>
+		</div>
+		
+		Select file with saved habits <input id="inputFileSelector" type ="file" />
+				<input type = "button" value = "Read file" onclick = "readSelectedFile()"/>
+				
+		<!-- Grid of habits -->	
+		<div class="container">
+		  <div class="row">
+			<div class="col-sm-6">
+			  <h2>List Habits</h2>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-sm-6">
+			  <table width="100%" id="habitTable"
+					  class="table table-bordered table-condensed table-striped">
+				<thead>
+				  <tr>
+					<th>Edit</th>
+					<th>Habit Quality</th>
+					<th>Habit Name</th>
+					<th>Cue</th>
+					<th>Craving</th>
+					<th>Routine description</th>
+					<th>Open habit wizard</th>
+					<th>Work on habit</th>
+					<th>Days</th>
+					<th>Delete</th>
+				  </tr>
+				</thead>
+			  </table>
+			</div>
+		  </div>
+		  <br>
+		  <div class="userInfoInput">
+		        <div>Habit Quality</div>
+				 <select id="quality">
+					 <option value="empty"></option>
+					 <option value="Good">Good</option>
+					 <option value="Bad">Bad</option>
+				 </select>
+		        <div>Habit Name</div>
+				<input type='text' id="habitName">
+				<div>Cue</div>
+				<textarea cols="110" id="cue"></textarea>
+				<div>Craving</div>
+				<textarea id="craving" rows="2" cols="110"></textarea>
+				<div>Routine description</div>
+				<textarea id="routine" rows="2" cols="110"></textarea>
+				<div class="updateVisible">Work on habit break</div>
+				<textarea id="work" class="updateVisible" rows="2" cols="110"></textarea>
+			    <div class="updateVisible" >Days without bad habit</div>
+				<textarea id="days" class="updateVisible" rows="2" cols="110">0</textarea>
+				</br></br>
+				<button type="button" id="updateButton"
+				class="btn btn-primary"
+				onclick="habitUpdate();"> Add
+				</button>
+				<button type="button" class="btn btn-primary" id="save"
+				onclick="saveHabitRowsToFile();"> Save habits to file
+				</button>
+		  </div>		
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src='scripts/TableToJson.min.js'></script>
+		<script src='scripts/TableToJson.js'></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>	
+		<script src="scripts/habits.js"></script> 
+		<script src="scripts/menu.js"></script> 
+		<script>
+			var menu1 = new Menu("#menu1");
+		</script>
+	</body>
+</html>
